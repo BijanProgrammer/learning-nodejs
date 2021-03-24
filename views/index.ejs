@@ -1,0 +1,19 @@
+<%- include('./partials/header.ejs') %>
+
+<main>
+    <h2>Blogs</h2>
+    <div class="blogs">
+        <% if (blogs.length > 0 ) { %>
+            <% blogs.forEach(blog => { %>
+                <div class="blog">
+                    <div class="blog__title"><%= blog.title %></div>
+                    <div class="blog__tag"><%= blog.tag %></div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <div class="empty">There are no blogs in the database.</div>
+        <% } %>
+    </div>
+</main>
+
+<%- include('./partials/footer.ejs') %>
