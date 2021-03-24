@@ -142,7 +142,7 @@ main {
         }
     }
     
-    .blogs .blogs,
+    .blogs .blog,
     .create form {
         background: $color-gray-98;
         
@@ -198,6 +198,12 @@ main {
                 line-height: 150%;
                 text-align: justify;
             }
+        }
+        
+        .empty {
+            font-size: 1.6rem;
+            font-weight: 400;
+            text-align: center;
         }
     }
     

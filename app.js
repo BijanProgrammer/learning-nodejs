@@ -1,22 +1,33 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const Blog = require('./models/blog');
 
+// express & ejs
 const app = express();
 app.set('view engine', 'ejs');
 
-app.listen(5000);
+// mongodb
+const DATABASE_URL = 'mongodb+srv://root:1234@myfirstcluster.q5ulo.mongodb.net/learning-nodejs?retryWrites=true&w=majority';
+mongoose.connect(DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => {
+        console.log('Successfully connected to database ...');
+        app.listen(5000, () => console.log('Listening on port 5000 ...'));
+    })
+    .catch((err) => console.log('Error (Database):', err));
 
+// middleware & static files like css
 app.use(express.static('public'));
+app.use(express.urlencoded({extended: true}));
 
-const body = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequuntur dolore eligendi est exercitationem fuga, in laborum libero maiores nesciunt nisi officiis quas quidem quis ratione reprehenderit repudiandae sint, sunt tempora ullam ut vel voluptas! Ab adipisci asperiores aspernatur blanditiis commodi consequuntur cum delectus deleniti dolores eius eos est eveniet exercitationem expedita fuga harum id ipsa itaque, iure magnam minima neque nesciunt nihil nisi nostrum obcaecati officiis optio repellendus rerum sit ullam vel veritatis, voluptatibus? A, ab accusamus adipisci consequuntur deleniti dolorem eligendi est excepturi explicabo fugiat incidunt laudantium, libero minima mollitia nostrum officiis, placeat quasi reprehenderit rerum ullam voluptates!';
-
+// routes
 app.get('/', (req, res) => {
-    const blogs = [
-        {title: 'First Blog', tag: 'html', body},
-        {title: 'Second Blog', tag: 'css', body},
-        {title: 'Third Blog', tag: 'js', body},
-    ];
-    
-    res.render('index', {title: 'Home', blogs});
+    Blog.find()
+        .then((result) => {
+            res.render('index', {title: 'Home', blogs: result});
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 });
 
 app.get('/home', (req, res) => {
@@ -29,6 +40,18 @@ app.get('/about', (req, res) => {
 
 app.get('/blogs/create', (req, res) => {
     res.render('create', {title: 'Add Blog'});
+});
+
+app.post('/blogs/create', (req, res) => {
+    const blog = new Blog(req.body);
+    
+    blog.save()
+        .then((result) => {
+            res.redirect('/');
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 });
 
 app.use((req, res) => {

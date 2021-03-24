@@ -3,21 +3,21 @@
 <main>
     <h2>Add Blog</h2>
     <div class="create">
-        <form>
+        <form action="/blogs/create" method="POST">
             <label>
                 Title
-                <input type="text" autocomplete="title" placeholder="e.g. Using CSS Grid to Create Inspiring Layouts"
-                       required/>
+                <input type="text" name="title" autocomplete="title"
+                       placeholder="e.g. Using CSS Grid to Create Inspiring Layouts" required/>
             </label>
 
             <label>
                 Tag
-                <input type="text" autocomplete="tag" placeholder="e.g. css" required/>
+                <input type="text" name="tag" autocomplete="tag" placeholder="e.g. css" required/>
             </label>
 
             <label>
                 Body
-                <textarea placeholder="e.g. In this post we are going to discuss ..." required></textarea>
+                <textarea name="body" placeholder="e.g. In this post we are going to discuss ..." required></textarea>
             </label>
 
             <button type="submit">Add Blog</button>

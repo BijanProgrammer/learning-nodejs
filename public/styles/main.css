@@ -99,7 +99,7 @@ main h2::before, main h2::after {
   border-block: 0.1rem solid currentColor;
   height: 0.4rem;
 }
-main .blogs .blogs,
+main .blogs .blog,
 main .create form {
   background: #fafafa;
   box-shadow: 0 0 0.2rem rgba(26, 26, 26, 0.1);
@@ -140,6 +140,11 @@ main .blogs .blog__body {
   font-weight: 400;
   line-height: 150%;
   text-align: justify;
+}
+main .blogs .empty {
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-align: center;
 }
 main .about {
   font-size: 1.8rem;
