@@ -1,0 +1,25 @@
+{
+    "name": "learning-nodejs",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/BijanProgrammer/learning-nodejs.git"
+    },
+    "keywords": [],
+    "author": "BijanProgrammer",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/BijanProgrammer/learning-nodejs/issues"
+    },
+    "homepage": "https://github.com/BijanProgrammer/learning-nodejs#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "lodash": "^4.17.21"
+    }
+}
