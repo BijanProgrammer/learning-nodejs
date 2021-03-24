@@ -6,8 +6,11 @@
         <% if (blogs.length > 0 ) { %>
             <% blogs.forEach(blog => { %>
                 <div class="blog">
-                    <div class="blog__title"><%= blog.title %></div>
-                    <div class="blog__tag"><%= blog.tag %></div>
+                    <div class="blog__head">
+                        <div class="blog__head__title"><%= blog.title %></div>
+                        <div class="blog__head__tag"><%= blog.tag %></div>
+                    </div>
+                    <div class="blog__body"><%= blog.body %></div>
                 </div>
             <% }) %>
         <% } else { %>

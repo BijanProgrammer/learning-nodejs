@@ -5,11 +5,15 @@ app.set('view engine', 'ejs');
 
 app.listen(5000);
 
+app.use(express.static('public'));
+
+const body = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consequuntur dolore eligendi est exercitationem fuga, in laborum libero maiores nesciunt nisi officiis quas quidem quis ratione reprehenderit repudiandae sint, sunt tempora ullam ut vel voluptas! Ab adipisci asperiores aspernatur blanditiis commodi consequuntur cum delectus deleniti dolores eius eos est eveniet exercitationem expedita fuga harum id ipsa itaque, iure magnam minima neque nesciunt nihil nisi nostrum obcaecati officiis optio repellendus rerum sit ullam vel veritatis, voluptatibus? A, ab accusamus adipisci consequuntur deleniti dolorem eligendi est excepturi explicabo fugiat incidunt laudantium, libero minima mollitia nostrum officiis, placeat quasi reprehenderit rerum ullam voluptates!';
+
 app.get('/', (req, res) => {
     const blogs = [
-        {title: 'First Blog', tag: 'html'},
-        {title: 'Second Blog', tag: 'css'},
-        {title: 'Third Blog', tag: 'js'},
+        {title: 'First Blog', tag: 'html', body},
+        {title: 'Second Blog', tag: 'css', body},
+        {title: 'Third Blog', tag: 'js', body},
     ];
     
     res.render('index', {title: 'Home', blogs});

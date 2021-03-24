@@ -2,25 +2,27 @@
 
 <main>
     <h2>Add Blog</h2>
-    <form>
-        <label>
-            Title:
-            <input type="text" autocomplete="title" placeholder="e.g. Using CSS Grid to Create Inspiring Layouts"
-                   required/>
-        </label>
+    <div class="create">
+        <form>
+            <label>
+                Title
+                <input type="text" autocomplete="title" placeholder="e.g. Using CSS Grid to Create Inspiring Layouts"
+                       required/>
+            </label>
 
-        <label>
-            Tag:
-            <input type="text" autocomplete="tag" placeholder="e.g. css" required/>
-        </label>
+            <label>
+                Tag
+                <input type="text" autocomplete="tag" placeholder="e.g. css" required/>
+            </label>
 
-        <label>
-            content:
-            <textarea placeholder="e.g. In this post we are going to discuss ..." required></textarea>
-        </label>
+            <label>
+                Body
+                <textarea placeholder="e.g. In this post we are going to discuss ..." required></textarea>
+            </label>
 
-        <button type="submit">Add</button>
-    </form>
+            <button type="submit">Add Blog</button>
+        </form>
+    </div>
 </main>
 
 <%- include('./partials/footer.ejs') %>

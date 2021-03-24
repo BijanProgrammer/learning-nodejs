@@ -1,0 +1,88 @@
+@use "colors" as *;
+
+*,
+*::before,
+*::after {
+    background: none;
+    
+    box-sizing: border-box;
+    
+    margin: 0;
+    padding: 0;
+    
+    border: none;
+    outline: none;
+    
+    font-family: "Roboto", sans-serif;
+    
+    text-decoration: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+*::-webkit-scrollbar {
+    width: 1rem;
+    height: 1rem;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: $color-gray-75;
+    
+    border: none;
+    border-radius: 1rem;
+}
+
+html {
+    height: 100%;
+    
+    font-size: 62.5%;
+    font-weight: 300;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    
+    min-height: 100%;
+    
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: inherit;
+}
+
+button {
+    min-width: 15rem;
+    
+    padding: 1rem 2rem;
+    
+    border-radius: 999rem;
+    
+    cursor: pointer;
+}
+
+input,
+textarea {
+    background: transparent;
+    color: $color-gray-25;;
+    
+    &::placeholder {
+        color: $color-gray-60;
+    }
+}
+
+svg {
+    display: flex;
+}
+
+.material-icons {
+    font-size: 1.4rem;
+}

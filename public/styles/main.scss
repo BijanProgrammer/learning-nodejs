@@ -1,0 +1,294 @@
+@use "colors" as *;
+
+@import "reset.css";
+
+body {
+    background: $color-gray-95;
+    color: $color-gray-25;
+    
+    > * {
+        padding: 0 6rem;
+    }
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    padding-block: 2rem;
+    
+    .logo {
+        h1 {
+            font-size: 2.4rem;
+            font-weight: bold;
+        }
+    }
+    
+    .navbar {
+        --gap: 2rem;
+        
+        display: flex;
+        
+        margin-inline-start: var(--gap);
+        
+        &::before {
+            content: "";
+            
+            display: inline-block;
+            
+            width: var(--gap);
+            
+            border-inline-start: 0.1rem solid currentColor;
+            
+            text-align: center;
+        }
+        
+        ul {
+            list-style: none;
+            
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 3rem;
+            
+            li {
+                a {
+                    position: relative;
+                    
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    
+                    font-size: 1.8rem;
+                    
+                    transform: scale(1);
+                    
+                    transition: transform 0.1s ease-in-out;
+                    
+                    &::after {
+                        content: "";
+                        
+                        opacity: 0;
+                        
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        bottom: -0.25rem;
+                        
+                        border-block-end: 0.2rem solid currentColor;
+                        
+                        transition: opacity 0.1s ease-in-out;
+                    }
+                    
+                    &:hover {
+                        transform: scale(1.1);
+                        
+                        &::after {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    .github {
+        margin-inline-start: auto;
+        
+        a {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+    }
+}
+
+main {
+    flex: 1;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    
+    h2 {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        
+        width: 100%;
+        
+        margin-block-end: 2rem;
+        
+        font-size: 2rem;
+        text-transform: uppercase;
+        
+        &::before,
+        &::after {
+            content: "";
+            
+            opacity: 0.5;
+            
+            flex: 1;
+            
+            display: block;
+            
+            border-block: 0.1rem solid currentColor;
+            
+            height: 0.4rem;
+        }
+    }
+    
+    .blogs .blogs,
+    .create form {
+        background: $color-gray-98;
+        
+        box-shadow: $shadow-subtle;
+        
+        padding: 1rem 2rem;
+        
+        border-radius: 1rem;
+    }
+    
+    .blogs {
+        flex: 1;
+        
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(50ch, 70ch));
+        gap: 2rem;
+        justify-content: center;
+        
+        .blog {
+            &__head {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                
+                margin-block-end: 2rem;
+                
+                &__title {
+                    font-size: 1.8rem;
+                    font-weight: bold;
+                }
+                
+                &__tag {
+                    background-color: $color-accent-light;
+                    color: $color-gray-98;
+                    
+                    width: fit-content;
+                    
+                    padding: 0.2rem 1rem;
+                    
+                    border-radius: 999rem;
+                    
+                    font-size: 1.2rem;
+                    font-weight: 300;
+                    text-transform: uppercase;
+                    text-align: center;
+                }
+            }
+            
+            &__body {
+                font-size: 1.4rem;
+                font-weight: 400;
+                line-height: 150%;
+                text-align: justify;
+            }
+        }
+    }
+    
+    .about {
+        font-size: 1.8rem;
+        font-weight: 300;
+        line-height: 150%;
+        text-align: justify;
+    }
+    
+    .create {
+        form {
+            gap: 2rem;
+            
+            min-width: 40rem;
+            max-width: 80rem;
+            
+            margin: 0 auto;
+            
+            &,
+            label {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                justify-content: flex-start;
+            }
+            
+            label {
+                gap: 0.5rem;
+                
+                font-size: 1.4rem;
+                font-weight: bold;
+                
+                input,
+                textarea {
+                    background: $color-gray-95;
+                    
+                    padding: 1rem 1rem;
+                    
+                    border-radius: 0.5rem;
+                    
+                    font-size: 1.6rem;
+                    font-weight: 400;
+                    
+                    &::placeholder {
+                        font-size: 1.4rem;
+                        font-weight: 300;
+                    }
+                }
+                
+                textarea {
+                    resize: vertical;
+                }
+            }
+            
+            button {
+                background: $color-primary-light;
+                color: $color-gray-98;
+                
+                width: fit-content;
+                
+                margin-inline-start: auto;
+                
+                text-transform: uppercase;
+                
+                transform: scale(1);
+                
+                transition: background, transform 0.1s ease-in-out;
+                
+                &:hover {
+                    background: $color-primary-dark;
+                    
+                    transform: scale(1.05);
+                }
+                
+                &:focus {
+                    transform: scale(0.95);
+                }
+            }
+        }
+    }
+}
+
+footer {
+    background-color: $color-accent-light;
+    color: $color-gray-98;
+    
+    margin-block-start: 2rem;
+    padding-block: 1rem;
+    
+    font-size: 1.4rem;
+    font-weight: 300;
+    text-align: center;
+}
