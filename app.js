@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Blog = require('./models/blog');
+const blogRoutes = require('./routes/blogRoutes');
 
 // express & ejs
 const app = express();
@@ -21,13 +21,7 @@ app.use(express.urlencoded({extended: true}));
 
 // routes
 app.get('/', (req, res) => {
-    Blog.find()
-        .then((result) => {
-            res.render('index', {title: 'Home', blogs: result});
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+    res.redirect('/blogs');
 });
 
 app.get('/home', (req, res) => {
@@ -38,21 +32,7 @@ app.get('/about', (req, res) => {
     res.render('about', {title: 'About'});
 });
 
-app.get('/blogs/create', (req, res) => {
-    res.render('create', {title: 'Add Blog'});
-});
-
-app.post('/blogs/create', (req, res) => {
-    const blog = new Blog(req.body);
-    
-    blog.save()
-        .then((result) => {
-            res.redirect('/');
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-});
+app.use('/blogs', blogRoutes);
 
 app.use((req, res) => {
     res.status(404).render('404', {title: 'Not Found'});
